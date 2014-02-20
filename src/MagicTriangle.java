@@ -9,12 +9,12 @@ public class MagicTriangle {
 
 	private static final int upperBound = 100;
 	private static final int lowerBound = 1;
-	private static final String NOT_A_TRIANGLE = "Not a triangle";
-	private static final String INVALID_INPUT_TYPE = "Invalid input type";
-	private static final String OUT_OF_RANGE_INPUT = "Out of range input";
-	private static final String EQUILATERAL = "Equilateral";
-	private static final String ISOSCELES = "Isosceles";
-	private static final String SCALENE = "Scalene";
+	public static final String NOT_A_TRIANGLE = "Not a triangle";
+	public static final String INVALID_INPUT_TYPE = "Invalid input type";
+	public static final String OUT_OF_RANGE_INPUT = "Out of range input";
+	public static final String EQUILATERAL = "Equilateral";
+	public static final String ISOSCELES = "Isosceles";
+	public static final String SCALENE = "Scalene";
 
 	/**
 	 * The main function that is expected to have three integers as inputs.
