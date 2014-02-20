@@ -14,7 +14,7 @@ import org.junit.Test;
  * @author dery
  *
  */
-public class TestMagicTriangle {
+public class MagicTriangleTest {
 
 	/**
 	 * @throws java.lang.Exception
@@ -58,6 +58,11 @@ public class TestMagicTriangle {
 	@Test
 	public void testIsValidEntries() {
 		fail("Not yet implemented");
+	}
+	
+	@Test
+	public void test() {
+		
 	}
 
 	/**
