@@ -47,38 +47,40 @@ public class MagicTriangleTest {
 	}
 	
 	@Test
-	public void testLessEntries() {
-		String[] arguments = {"1", "1"};
-		MagicTriangle.isValidEntries(arguments);
-		assertEquals(MagicTriangle.NOT_A_TRIANGLE + "\n", outputContent.toString());
-	}
-	
-	@Test
 	public void testNoEntries() {
 		String[] arguments = {};
 		MagicTriangle.isValidEntries(arguments);
-		assertEquals(MagicTriangle.NOT_A_TRIANGLE + "\n", outputContent.toString());
+		assertEquals(MagicTriangle.NO_ARGS + "\n", outputContent.toString());
+	}
+	
+	@Test
+	public void testLessEntries() {
+		String[] arguments = {"1", "1"};
+		MagicTriangle.isValidEntries(arguments);
+		assertEquals(MagicTriangle.TOO_FEW_ARGS + "\n", outputContent.toString());
 	}
 	
 	@Test
 	public void testMoreEntries() {
 		String[] arguments = {"1", "1", "1", "1"};
 		MagicTriangle.isValidEntries(arguments);
-		assertEquals(MagicTriangle.NOT_A_TRIANGLE + "\n", outputContent.toString());
+		assertEquals(MagicTriangle.TOO_MANY_ARGS + "\n", outputContent.toString());
 	}
-	
+	/*
 	@Test
 	public void test10Entries() {
 		String[] arguments = {"1", "1", "1", "1", "1", "1", "1", "1", "1", "1"};
 		MagicTriangle.isValidEntries(arguments);
 		assertEquals(MagicTriangle.NOT_A_TRIANGLE + "\n", outputContent.toString());
 	}
-
+	*/
 	/**
 	 * Test method for {@link MagicTriangle#findWhichTypeOfTriangle()}.
 	 */
+	/*
 	@Test
 	public void testFindWhichTypeOfTriangle() {
 	}
+	*/
 
 }

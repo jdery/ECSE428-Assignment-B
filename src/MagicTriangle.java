@@ -7,8 +7,11 @@ public class MagicTriangle {
 
 	private static int A, B, C;
 
-	private static final int upperBound = 100;
-	private static final int lowerBound = 1;
+	//private static final int upperBound = 100;
+	//private static final int lowerBound = 1;
+	public static final String NO_ARGS = "Usage: MagicTriangle a b c";
+	public static final String TOO_FEW_ARGS = "Too few arguments";
+	public static final String TOO_MANY_ARGS = "Too many arguments";
 	public static final String NOT_A_TRIANGLE = "Not a triangle";
 	public static final String INVALID_INPUT_TYPE = "Invalid input type";
 	public static final String OUT_OF_RANGE_INPUT = "Out of range input";
@@ -24,7 +27,7 @@ public class MagicTriangle {
 	 */
 	public static void main(String[] args) {
 		if (isValidEntries(args)) {
-			findWhichTypeOfTriangle();
+			
 		}
 	}
 
@@ -39,10 +42,31 @@ public class MagicTriangle {
 	 */
 	public static boolean isValidEntries(String arguments[]) {
 		// Verifies if it's a triangle.
-		if (arguments.length != 3) {
-			System.out.println(NOT_A_TRIANGLE);
+		if (arguments.length == 0) {
+			System.out.println(NO_ARGS);
 			return (false);
 		}
+		else if (arguments.length < 3) {
+			System.out.println(TOO_FEW_ARGS);
+			return (false);
+		}
+		else if (arguments.length > 3) {
+			System.out.println(TOO_MANY_ARGS);
+			return (false);
+		}
+
+		return (true);
+	}
+		
+		
+		
+		
+		
+		/*
+				
+
+
+		
 
 		// Verifies if the inputs are integers.
 		try {
@@ -66,9 +90,8 @@ public class MagicTriangle {
 			System.out.println(NOT_A_TRIANGLE);
 			return (false);
 		}
-		
-		return (true);
-	}
+
+	*/
 	
 	/**
 	 * Find which type of triangle it is.
