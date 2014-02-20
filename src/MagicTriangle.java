@@ -1,8 +1,4 @@
 /**
- * 
- */
-
-/**
  * @author Jean-Sebastien Dery
  * @author Renaud Dagenais
  * 
@@ -16,6 +12,9 @@ public class MagicTriangle {
 	private static final String NOT_A_TRIANGLE = "Not a triangle";
 	private static final String INVALID_INPUT_TYPE = "Invalid input type";
 	private static final String OUT_OF_RANGE_INPUT = "Out of range input";
+	private static final String EQUILATERAL = "Equilateral";
+	private static final String ISOSCELES = "Isosceles";
+	private static final String SCALENE = "Scalene";
 
 	/**
 	 * The main function that is expected to have three integers as inputs.
@@ -24,9 +23,9 @@ public class MagicTriangle {
 	 *            The integers that will define the triangle.
 	 */
 	public static void main(String[] args) {
-		validateEntries(args);
-
-		
+		if (isValidEntries(args)) {
+			findWhichTypeOfTriangle();
+		}
 	}
 
 	/**
@@ -38,11 +37,11 @@ public class MagicTriangle {
 	 * @param arguments
 	 *            The arguments to be validated.
 	 */
-	public static void validateEntries(String arguments[]) {
+	public static boolean isValidEntries(String arguments[]) {
 		// Verifies if it's a triangle.
 		if (arguments.length != 3) {
 			System.out.println(NOT_A_TRIANGLE);
-			return;
+			return (false);
 		}
 
 		// Verifies if the inputs are integers.
@@ -52,20 +51,41 @@ public class MagicTriangle {
 			C = Integer.parseInt(arguments[2]);
 		} catch (Exception e) {
 			System.out.println(INVALID_INPUT_TYPE);
-			return;
+			return (false);
 		}
 
 		// Verifies that the inputs are in the specified range.
 		if (A > upperBound || A < lowerBound || B > upperBound
 				|| B < lowerBound || C > upperBound || C < lowerBound) {
 			System.out.println(OUT_OF_RANGE_INPUT);
-			return;
+			return (false);
 		}
 
 		// Determine if it is a triangle based on the input configuration.
 		if (!((A + B) > C && (A + C) > B && (B + C) > A)) {
 			System.out.println(NOT_A_TRIANGLE);
+			return (false);
+		}
+		
+		return (true);
+	}
+	
+	/**
+	 * Find which type of triangle it is.
+	 * 
+	 * @param arguments The arguments that will determine which type of triangle it is.
+	 */
+	public static void findWhichTypeOfTriangle() {
+		if (A == B && A == C && B == C) {
+			System.out.println(EQUILATERAL);
 			return;
 		}
+		
+		if (A == B || B == C || A == C) {
+			System.out.println(ISOSCELES);
+			return;
+		}
+		
+		System.out.println(SCALENE);
 	}
 }
