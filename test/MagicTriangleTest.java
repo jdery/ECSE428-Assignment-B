@@ -4,9 +4,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
 import org.junit.After;
-import org.junit.AfterClass;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 
 /**
@@ -15,20 +13,6 @@ import org.junit.Test;
  */
 public class MagicTriangleTest {
 	private final ByteArrayOutputStream outputContent = new ByteArrayOutputStream();
-
-	/**
-	 * @throws java.lang.Exception
-	 */
-	@BeforeClass
-	public static void setUpBeforeClass() throws Exception {
-	}
-
-	/**
-	 * @throws java.lang.Exception
-	 */
-	@AfterClass
-	public static void tearDownAfterClass() throws Exception {
-	}
 
 	/**
 	 * @throws java.lang.Exception
@@ -75,8 +59,70 @@ public class MagicTriangleTest {
 	}
 	
 	@Test
-	public void testNonIntegerEntries() {
+	public void testNonIntegerEntries1() {
 		String[] arguments = {"A", "B", "C"};
+		MagicTriangle.isValidEntries(arguments);
+		assertEquals(MagicTriangle.INVALID_INPUT_TYPE + "\n", outputContent.toString());
+	}
+	
+	@Test
+	public void testNonIntegerEntries2() {
+		String[] arguments = {"$", "@", "&"};
+		MagicTriangle.isValidEntries(arguments);
+		assertEquals(MagicTriangle.INVALID_INPUT_TYPE + "\n", outputContent.toString());
+	}
+	@Test
+	public void testNonIntegerEntries3() {
+		String[] arguments = {null, null, null};
+		MagicTriangle.isValidEntries(arguments);
+		assertEquals(MagicTriangle.INVALID_INPUT_TYPE + "\n", outputContent.toString());
+	}
+	
+	@Test
+	public void testNonIntegerEntries4() {
+		String[] arguments = {"1", "4", null};
+		MagicTriangle.isValidEntries(arguments);
+		assertEquals(MagicTriangle.INVALID_INPUT_TYPE + "\n", outputContent.toString());
+	}
+	
+	@Test
+	public void testNonIntegerEntries5() {
+		String[] arguments = {" ", " ", " "};
+		MagicTriangle.isValidEntries(arguments);
+		assertEquals(MagicTriangle.INVALID_INPUT_TYPE + "\n", outputContent.toString());
+	}
+	
+	@Test
+	public void testNonIntegerEntries6() {
+		String[] arguments = {"\n", "\n", "\n"};
+		MagicTriangle.isValidEntries(arguments);
+		assertEquals(MagicTriangle.INVALID_INPUT_TYPE + "\n", outputContent.toString());
+	}
+	
+	@Test
+	public void testNonIntegerEntries7() {
+		String[] arguments = {"\t", "\t", "\t"};
+		MagicTriangle.isValidEntries(arguments);
+		assertEquals(MagicTriangle.INVALID_INPUT_TYPE + "\n", outputContent.toString());
+	}
+	
+	@Test
+	public void testNonIntegerEntries8() {
+		String[] arguments = {"\r", "\r", "\r"};
+		MagicTriangle.isValidEntries(arguments);
+		assertEquals(MagicTriangle.INVALID_INPUT_TYPE + "\n", outputContent.toString());
+	}
+
+	@Test
+	public void testNonIntegerEntries9() {
+		String[] arguments = {"50.3", "1.59", "2.5"};
+		MagicTriangle.isValidEntries(arguments);
+		assertEquals(MagicTriangle.INVALID_INPUT_TYPE + "\n", outputContent.toString());
+	}
+	
+	@Test
+	public void testNonIntegerEntries10() {
+		String[] arguments = {"2.0", "2.0", "2.0"};
 		MagicTriangle.isValidEntries(arguments);
 		assertEquals(MagicTriangle.INVALID_INPUT_TYPE + "\n", outputContent.toString());
 	}
@@ -124,6 +170,20 @@ public class MagicTriangleTest {
 	}
 	
 	@Test
+	public void testOutOfRangeInputs5() {
+		String[] arguments = {"101", "101", "101"};
+		MagicTriangle.isValidEntries(arguments);
+		assertEquals(MagicTriangle.OUT_OF_RANGE_INPUT + "\n", outputContent.toString());
+	}
+	
+	@Test
+	public void testOutOfRangeInputs6() {
+		String[] arguments = {"0", "0", "0"};
+		MagicTriangle.isValidEntries(arguments);
+		assertEquals(MagicTriangle.OUT_OF_RANGE_INPUT + "\n", outputContent.toString());
+	}
+	
+	@Test
 	public void testValidInputsNotATriangle1() {
 		String[] arguments = {"1", "2", "1"};
 		MagicTriangle.isValidEntries(arguments);
@@ -145,6 +205,13 @@ public class MagicTriangleTest {
 	}
 	
 	@Test
+	public void testValidInputsNotATriangle4() {
+		String[] arguments = {"1", "1", "100"};
+		MagicTriangle.main(arguments);
+		assertEquals(MagicTriangle.NOT_A_TRIANGLE + "\n", outputContent.toString());
+	}
+	
+	@Test
 	public void testEquilateralTriangle1() {
 		String[] arguments = {"1", "1", "1"};
 		MagicTriangle.main(arguments);
@@ -161,6 +228,13 @@ public class MagicTriangleTest {
 	@Test
 	public void testEquilateralTriangle3() {
 		String[] arguments = {"4", "4", "4"};
+		MagicTriangle.main(arguments);
+		assertEquals(MagicTriangle.EQUILATERAL + "\n", outputContent.toString());
+	}
+	
+	@Test
+	public void testEquilateralTriangle4() {
+		String[] arguments = {"100", "100", "100"};
 		MagicTriangle.main(arguments);
 		assertEquals(MagicTriangle.EQUILATERAL + "\n", outputContent.toString());
 	}
@@ -194,6 +268,13 @@ public class MagicTriangleTest {
 	}
 	
 	@Test
+	public void testIsoscelesTriangle5() {
+		String[] arguments = {"100", "100", "1"};
+		MagicTriangle.main(arguments);
+		assertEquals(MagicTriangle.ISOSCELES + "\n", outputContent.toString());
+	}
+	
+	@Test
 	public void testScaleneTriangle1() {
 		String[] arguments = {"20", "30", "32"};
 		MagicTriangle.main(arguments);
@@ -214,10 +295,17 @@ public class MagicTriangleTest {
 		assertEquals(MagicTriangle.SCALENE + "\n", outputContent.toString());
 	}
 	
-	/**
-	 * Test method for {@link MagicTriangle#findWhichTypeOfTriangle()}.
-	 */
 	@Test
-	public void testFindWhichTypeOfTriangle() {
+	public void testScaleneTriangle4() {
+		String[] arguments = {"12", "6", "14"};
+		MagicTriangle.main(arguments);
+		assertEquals(MagicTriangle.SCALENE + "\n", outputContent.toString());
+	}
+	
+	@Test
+	public void testScaleneTriangle5() {
+		String[] arguments = {"5", "10", "13"};
+		MagicTriangle.main(arguments);
+		assertEquals(MagicTriangle.SCALENE + "\n", outputContent.toString());
 	}
 }

@@ -9,9 +9,6 @@ public class MagicTriangle {
 
 	private static final int UPPER_BOUND = 100;
 	private static final int LOWER_BOUND = 1;
-//	public static final String NO_ARGS = "Usage: MagicTriangle a b c"; FIXME: not a requirement
-//	public static final String TOO_FEW_ARGS = "Too few arguments"; FIXME: not a requirement
-//	public static final String TOO_MANY_ARGS = "Too many arguments"; FIXME: not a requirement
 	public static final String NOT_A_TRIANGLE = "Not a triangle";
 	public static final String INVALID_INPUT_TYPE = "Invalid input type";
 	public static final String OUT_OF_RANGE_INPUT = "Out of range input";
@@ -40,19 +37,7 @@ public class MagicTriangle {
 	 * @param arguments
 	 *            The arguments to be validated.
 	 */
-	public static boolean isValidEntries(String arguments[]) {
-		// FIXME: not a requirement.
-//		if (arguments.length == 0) {
-//			System.out.println(NO_ARGS);
-//			return (false);
-//		} else if (arguments.length < 3) {
-//			System.out.println(TOO_FEW_ARGS);
-//			return (false);
-//		} else if (arguments.length > 3) {
-//			System.out.println(TOO_MANY_ARGS);
-//			return (false);
-//		}
-		
+	public static boolean isValidEntries(String arguments[]) {		
 		// Verifies if it's a triangle.
 		if (arguments.length != 3) {
 			System.out.println(NOT_A_TRIANGLE);
