@@ -7,11 +7,11 @@ public class MagicTriangle {
 
 	private static int A, B, C;
 
-	//private static final int upperBound = 100;
-	//private static final int lowerBound = 1;
-	public static final String NO_ARGS = "Usage: MagicTriangle a b c";
-	public static final String TOO_FEW_ARGS = "Too few arguments";
-	public static final String TOO_MANY_ARGS = "Too many arguments";
+	private static final int UPPER_BOUND = 100;
+	private static final int LOWER_BOUND = 1;
+//	public static final String NO_ARGS = "Usage: MagicTriangle a b c"; FIXME: not a requirement
+//	public static final String TOO_FEW_ARGS = "Too few arguments"; FIXME: not a requirement
+//	public static final String TOO_MANY_ARGS = "Too many arguments"; FIXME: not a requirement
 	public static final String NOT_A_TRIANGLE = "Not a triangle";
 	public static final String INVALID_INPUT_TYPE = "Invalid input type";
 	public static final String OUT_OF_RANGE_INPUT = "Out of range input";
@@ -27,7 +27,7 @@ public class MagicTriangle {
 	 */
 	public static void main(String[] args) {
 		if (isValidEntries(args)) {
-			
+			findWhichTypeOfTriangle();
 		}
 	}
 
@@ -41,32 +41,23 @@ public class MagicTriangle {
 	 *            The arguments to be validated.
 	 */
 	public static boolean isValidEntries(String arguments[]) {
+		// FIXME: not a requirement.
+//		if (arguments.length == 0) {
+//			System.out.println(NO_ARGS);
+//			return (false);
+//		} else if (arguments.length < 3) {
+//			System.out.println(TOO_FEW_ARGS);
+//			return (false);
+//		} else if (arguments.length > 3) {
+//			System.out.println(TOO_MANY_ARGS);
+//			return (false);
+//		}
+		
 		// Verifies if it's a triangle.
-		if (arguments.length == 0) {
-			System.out.println(NO_ARGS);
+		if (arguments.length != 3) {
+			System.out.println(NOT_A_TRIANGLE);
 			return (false);
 		}
-		else if (arguments.length < 3) {
-			System.out.println(TOO_FEW_ARGS);
-			return (false);
-		}
-		else if (arguments.length > 3) {
-			System.out.println(TOO_MANY_ARGS);
-			return (false);
-		}
-
-		return (true);
-	}
-		
-		
-		
-		
-		
-		/*
-				
-
-
-		
 
 		// Verifies if the inputs are integers.
 		try {
@@ -79,8 +70,8 @@ public class MagicTriangle {
 		}
 
 		// Verifies that the inputs are in the specified range.
-		if (A > upperBound || A < lowerBound || B > upperBound
-				|| B < lowerBound || C > upperBound || C < lowerBound) {
+		if (A > UPPER_BOUND || A < LOWER_BOUND || B > UPPER_BOUND
+				|| B < LOWER_BOUND || C > UPPER_BOUND || C < LOWER_BOUND) {
 			System.out.println(OUT_OF_RANGE_INPUT);
 			return (false);
 		}
@@ -91,24 +82,27 @@ public class MagicTriangle {
 			return (false);
 		}
 
-	*/
-	
+		return (true);
+	}
+
 	/**
 	 * Find which type of triangle it is.
 	 * 
-	 * @param arguments The arguments that will determine which type of triangle it is.
+	 * @param arguments
+	 *            The arguments that will determine which type of triangle it
+	 *            is.
 	 */
 	public static void findWhichTypeOfTriangle() {
 		if (A == B && A == C && B == C) {
 			System.out.println(EQUILATERAL);
 			return;
 		}
-		
+
 		if (A == B || B == C || A == C) {
 			System.out.println(ISOSCELES);
 			return;
 		}
-		
+
 		System.out.println(SCALENE);
 	}
 }
