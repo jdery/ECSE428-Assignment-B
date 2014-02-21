@@ -1,12 +1,12 @@
 /**
  * @author Jean-Sebastien Dery
- * @author Renaud Dagenais
+ * @author Renaud Jacques-Dagenais
  * 
  */
 public class MagicTriangle {
-
+	
 	private static int A, B, C;
-
+	 
 	private static final int UPPER_BOUND = 100;
 	private static final int LOWER_BOUND = 1;
 	public static final String NOT_A_TRIANGLE = "Not a triangle";
@@ -43,7 +43,7 @@ public class MagicTriangle {
 			System.out.println(NOT_A_TRIANGLE);
 			return (false);
 		}
-
+		
 		// Verifies if the inputs are integers.
 		try {
 			A = Integer.parseInt(arguments[0]);
@@ -60,7 +60,7 @@ public class MagicTriangle {
 			System.out.println(OUT_OF_RANGE_INPUT);
 			return (false);
 		}
-
+		
 		// Determine if it is a triangle based on the input configuration.
 		if (!((A + B) > C && (A + C) > B && (B + C) > A)) {
 			System.out.println(NOT_A_TRIANGLE);
@@ -82,12 +82,12 @@ public class MagicTriangle {
 			System.out.println(EQUILATERAL);
 			return;
 		}
-
+		
 		if (A == B || B == C || A == C) {
 			System.out.println(ISOSCELES);
 			return;
 		}
-
+		
 		System.out.println(SCALENE);
 	}
 }
